@@ -13,34 +13,40 @@
 </head>
 
 <body>
-    <header class="container bg-dark text-light">
+    <header class="container-fluid">
         <h1>Weather Dashboard</h1>
     </header>
 
-    <main class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
-        <div class="col-12 col-md-3 bg-light p-3">
-            <h2 class="text-primary">Search For a City:</h2>
+    <main class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh">
+        <div class="col-12 col-md-3 p-3 min-100-vh">
+            <h2 class="font-weight-bold">Search For a City:</h2>
             <form id="search-form" class="mb-2">
-                <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
-                <button id="search-button" type="submit" class="btn btn-info btn-block">Search</button>
+                <input id="search-input" class="form-input w-100" type="text" placeholder="London">
+                <button id="search-button" type="submit" class="btn btn-block">Search</button>
             </form>
-            <div>
-                <ul>
-                    <li>for</li>
-                    <li>formatting</li>
-                    <li>purposes</li>
+            <div class="text-center">
+                <ul class="pl-0">
+                    <li class="mb-2 btn btn-block font-weight-bold">for</li>
+                    <li class="mb-2 btn btn-block font-weight-bold">formatting</li>
+                    <li class="mb-2 btn btn-block font-weight-bold">purposes</li>
                 </ul>
             </div>
         </div>
 
-        <div class="col-12 col-md-9 p-3 text-light">
-            <div class="jumbotron">
+        <div class="col-12 col-md-9 p-3">
+            <div class="jumbotron border border-dark p-0">
+                <ul class="pl-1">
+                    <li>City (today's date) icon</li>
+                    <li>temp</li>
+                    <li>wind</li>
+                    <li>humidity</li>
+                </ul>
             </div>
             <div>
                 <h3>5-Day Forecast:</h3>
-                <div class="row">
-                    <div class="card col">
-                        <ul>
+                <div class="row" id="forecast-card-block">
+                    <div class="card col forecast-cards">
+                        <ul class="pl-0">
                             <li id="date1">date</li>
                             <li id="icon1">icon</li>
                             <li id="temp1">temp</li>
@@ -48,8 +54,8 @@
                             <li id="humidity1">humidity</li>
                         </ul>
                     </div>
-                    <div class="card col">
-                        <ul>
+                    <div class="card col forecast-cards">
+                        <ul class="pl-0">
                             <li>date</li>
                             <li>icon</li>
                             <li>temp</li>
@@ -57,8 +63,8 @@
                             <li>humidity</li>
                         </ul>
                     </div>
-                    <div class="card col">
-                        <ul>
+                    <div class="card col forecast-cards">
+                        <ul class="pl-0">
                             <li>date</li>
                             <li>icon</li>
                             <li>temp</li>
@@ -66,8 +72,8 @@
                             <li>humidity</li>
                         </ul>
                     </div>
-                    <div class="card col">
-                        <ul>
+                    <div class="card col forecast-cards">
+                        <ul class="pl-0">
                             <li>date</li>
                             <li>icon</li>
                             <li>temp</li>
@@ -75,8 +81,8 @@
                             <li>humidity</li>
                         </ul>
                     </div>
-                    <div class="card col">
-                        <ul>
+                    <div class="card col forecast-cards">
+                        <ul class="pl-0">
                             <li>date</li>
                             <li>icon</li>
                             <li>temp</li>
