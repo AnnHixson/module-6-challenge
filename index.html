@@ -18,24 +18,19 @@
     </header>
 
     <main class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh">
-        <div class="col-12 col-md-3 p-3 min-100-vh">
+        <div class="col-12 col-md-3 p-3 ">
             <h2 class="font-weight-bold">Search For a City:</h2>
             <form id="search-form" class="mb-2">
                 <input id="search-input" class="form-input w-100" type="text" placeholder="London">
                 <button id="search-button" type="submit" class="btn btn-block">Search</button>
             </form>
-            <div class="text-center">
-                <ul class="pl-0">
-                    <li class="mb-2 btn btn-block font-weight-bold">for</li>
-                    <li class="mb-2 btn btn-block font-weight-bold">formatting</li>
-                    <li class="mb-2 btn btn-block font-weight-bold">purposes</li>
-                </ul>
+            <div class="text-center" id="saved-searches">
             </div>
         </div>
 
         <div class="col-12 col-md-9 p-3">
             <div class="jumbotron border border-dark p-0">
-                <ul class="pl-1">
+                <ul class="pl-1" id="forecast-day-0">
                     <li>City (today's date) icon</li>
                     <li>temp</li>
                     <li>wind</li>
@@ -46,48 +41,23 @@
                 <h3>5-Day Forecast:</h3>
                 <div class="row" id="forecast-card-block">
                     <div class="card col forecast-cards">
-                        <ul class="pl-0">
-                            <li id="date1">date</li>
-                            <li id="icon1">icon</li>
-                            <li id="temp1">temp</li>
-                            <li id="wind1">wind</li>
-                            <li id="humidity1">humidity</li>
+                        <ul class="pl-0" id="forecast-day-1">
                         </ul>
                     </div>
                     <div class="card col forecast-cards">
-                        <ul class="pl-0">
-                            <li>date</li>
-                            <li>icon</li>
-                            <li>temp</li>
-                            <li>wind</li>
-                            <li>humidity</li>
+                        <ul class="pl-0" id="forecast-day-2">
                         </ul>
                     </div>
                     <div class="card col forecast-cards">
-                        <ul class="pl-0">
-                            <li>date</li>
-                            <li>icon</li>
-                            <li>temp</li>
-                            <li>wind</li>
-                            <li>humidity</li>
+                        <ul class="pl-0" id="forecast-day-3">
                         </ul>
                     </div>
                     <div class="card col forecast-cards">
-                        <ul class="pl-0">
-                            <li>date</li>
-                            <li>icon</li>
-                            <li>temp</li>
-                            <li>wind</li>
-                            <li>humidity</li>
+                        <ul class="pl-0" id="forecast-day-4">
                         </ul>
                     </div>
                     <div class="card col forecast-cards">
-                        <ul class="pl-0">
-                            <li>date</li>
-                            <li>icon</li>
-                            <li>temp</li>
-                            <li>wind</li>
-                            <li>humidity</li>
+                        <ul class="pl-0" id="forecast-day-5">
                         </ul>
                     </div>
                 </div>
@@ -97,7 +67,7 @@
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <!-- <script src="./assets/js/script.js"></script> -->
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
