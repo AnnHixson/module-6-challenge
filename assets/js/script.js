@@ -90,6 +90,7 @@ function getWeatherForecast() {
         })
         .then(function (data) {
             console.log("data", data);
+            // Display the 5 day forecast
             for (var i = 1; i < forecastFor5Days.length; i++) {
                 date = data.list[i].dt_txt;
                 weatherIcon = data.list[i].weather[0].icon;
@@ -101,17 +102,35 @@ function getWeatherForecast() {
                 var displayWeatherIcon = document.createElement('li');
                 displayWeatherIcon.textContent = weatherIcon;
                 var displayTemperature = document.createElement('li');
-                displayTemperature.textContent = temperature;
+                displayTemperature.textContent = 'Temp: ' + temperature + '°F';
                 var displayWindSpeed = document.createElement('li');
-                displayWindSpeed.textContent = windSpeed;
+                displayWindSpeed.textContent = 'Wind: ' + windSpeed + ' MPH';
                 var displayHumidityPercent = document.createElement('li');
-                displayHumidityPercent.textContent = humidityPercent;                
+                displayHumidityPercent.textContent = 'Humidity: ' + humidityPercent + '%';                
                 forecastFor5Days[i].append(displayDate);
                 forecastFor5Days[i].append(displayWeatherIcon);
                 forecastFor5Days[i].append(displayTemperature);
                 forecastFor5Days[i].append(displayWindSpeed);
                 forecastFor5Days[i].append(displayHumidityPercent); 
             }
+            // Display today's weather forecast in the jumbotron
+            date = data.list[0].dt_txt;
+            weatherIcon = data.list[0].weather[0].icon;
+            temperature = data.list[0].main.temp;
+            windSpeed = data.list[0].wind.speed;
+            humidityPercent = data.list[0].main.humidity;
+            var jumboDisplayLine1 = document.createElement('li');
+            jumboDisplayLine1.textContent = cityName + ' (' + date + ') ' + weatherIcon;
+            var jumboDisplayLine2 = document.createElement('li');
+            jumboDisplayLine2.textContent = 'Temp: ' + temperature + '°F';
+            var jumboDisplayLine3 = document.createElement('li');
+            jumboDisplayLine3.textContent = 'Wind: ' + windSpeed + ' MPH';
+            var jumboDisplayLine4 = document.createElement('li');
+            jumboDisplayLine4.textContent = 'Humidity: ' + humidityPercent + '%';
+            forecastToday.append(jumboDisplayLine1);
+            forecastToday.append(jumboDisplayLine2);
+            forecastToday.append(jumboDisplayLine3);
+            forecastToday.append(jumboDisplayLine4);
         })
         .then (displayWeatherForecast)
 }
