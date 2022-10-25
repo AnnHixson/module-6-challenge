@@ -4,12 +4,12 @@ var searchForm = $('#search-form');
 var searchInput = $('#search-input');
 var savedSearches = $('#saved-searches');
 var forecastToday = $('#forecast-day-0');
-var forecastDay1 = $('#forecast-day-1');
-var forecastDay2 = $('#forecast-day-2');
-var forecastDay3 = $('#forecast-day-3');
-var forecastDay4 = $('#forecast-day-4');
-var forecastDay5 = $('#forecast-day-5');
-var forecastFor5Days = ["", forecastDay1, forecastDay2, forecastDay3, forecastDay4, forecastDay5]; //The blank first item of this array allows for the first data entry to be skipped in the 5 Day Forecast portion, so it can go in the jumbotron instead
+// var forecastDay1 = $('#forecast-day-1');
+// var forecastDay2 = $('#forecast-day-2');
+// var forecastDay3 = $('#forecast-day-3');
+// var forecastDay4 = $('#forecast-day-4');
+// var forecastDay5 = $('#forecast-day-5');
+// var forecastFor5Days = ["", forecastDay1, forecastDay2, forecastDay3, forecastDay4, forecastDay5]; //The blank first item of this array allows for the first data entry to be skipped in the 5 Day Forecast portion, so it can go in the jumbotron instead
 // API Key Variable
 var APIKey = "3b2c079221ed0780f8696a22bcc2d627";
 // Geocoding Variables
@@ -25,9 +25,66 @@ var weatherIcon;
 var temperature;
 var windSpeed;
 var humidityPercent;
-var iconSymbol
+var iconSymbol;
 // Other Variables
 var storedSearchesButton;
+// testing
+var jumboDisplayLine1;
+var jumboDisplayIconLine;
+var jumboDisplayIconImage;
+var jumboDisplayLine2;
+var jumboDisplayLine3;
+var jumboDisplayLine4;
+var displayDate;
+var displayWeatherIcon;
+                var weatherIconImage;
+var displayTemperature;
+var displayWindSpeed;
+var displayHumidityPercent;
+
+                // displayDate.innerHTML = '';
+                // displayWeatherIcon.innerHTML = '';
+                // displayTemperature.innerHTML = '';
+                // displayWindSpeed.innerHTML = '';
+                // displayHumidityPercent.innerHTML = '';
+
+// var date1 = [''];
+// var date2 = [''];
+// var date3 = [''];
+// var date4 = [''];
+// var date5 = [''];
+// var dateArray = ['', date1, date2, date3, date4, date5];
+
+
+
+var weatherDay1 = $('#weather1');
+var weatherDay2 = $('#weather2');
+var weatherDay3 = $('#weather3');
+var weatherDay4 = $('#weather4');
+var weatherDay5 = $('#weather5');
+var weatherFor5Days = ["", weatherDay1, weatherDay2, weatherDay3, weatherDay4, weatherDay5];
+
+var forecastDay1;
+var forecastDay2;
+var forecastDay3;
+var forecastDay4;
+var forecastDay5;
+var forecastFor5Days = ["", forecastDay1, forecastDay2, forecastDay3, forecastDay4, forecastDay5];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Functions
 // Get the latitude and longitude of the searched location
@@ -92,31 +149,76 @@ function getWeatherForecast() {
         .then(function (data) {
             console.log("data", data);
             // Display the 5 day forecast
-            for (var i = 1; i < forecastFor5Days.length; i++) {
+            // for (var i = 1; i < forecastFor5Days.length; i++) {
+                for (var i = 1; i < 6; i++) {
+                if (jumboDisplayIconLine) {
+                //     displayDate.innerHTML = '';
+                //     displayWeatherIcon.innerHTML = '';
+                //     displayTemperature.innerHTML = '';
+                //     displayWindSpeed.innerHTML = '';
+                //     displayHumidityPercent.innerHTML = '';
+                    forecastDay1.innerHTML = '';
+                    forecastDay2.innerHTML = '';
+                    forecastDay3.innerHTML = '';
+                    forecastDay4.innerHTML = '';
+                    forecastDay5.innerHTML = '';
+                }
                 date = data.list[i * 8 - 1].dt_txt; //with assisteance from AskBCS
                 weatherIcon = data.list[i].weather[0].icon;
                 displayIcon();
                 temperature = data.list[i].main.temp;
                 windSpeed = data.list[i].wind.speed;
                 humidityPercent = data.list[i].main.humidity;
-                var displayDate = document.createElement('li');
+                displayDate = document.createElement('li');
                 displayDate.textContent = date;
-                var displayWeatherIcon = document.createElement('li');
-                var weatherIconImage = document.createElement('img')
+                displayWeatherIcon = document.createElement('li');
+                weatherIconImage = document.createElement('img')
                 $(weatherIconImage).attr('src', iconSymbol)
                 displayWeatherIcon.append(weatherIconImage)
                 // displayWeatherIcon.textContent = iconSymbol;
-                var displayTemperature = document.createElement('li');
+                displayTemperature = document.createElement('li');
                 displayTemperature.textContent = 'Temp: ' + temperature + '°F';
-                var displayWindSpeed = document.createElement('li');
+                displayWindSpeed = document.createElement('li');
                 displayWindSpeed.textContent = 'Wind: ' + windSpeed + ' MPH';
-                var displayHumidityPercent = document.createElement('li');
-                displayHumidityPercent.textContent = 'Humidity: ' + humidityPercent + '%';                
+                displayHumidityPercent = document.createElement('li');
+                displayHumidityPercent.textContent = 'Humidity: ' + humidityPercent + '%';   
+                
+                // dateArray[i].push(displayDate);
+
+
+                // testDate = document.createElement('ui')
+
+                forecastDay1 = document.createElement('ul');
+                forecastDay2 = document.createElement('ul');
+                forecastDay3 = document.createElement('ul');
+                forecastDay4 = document.createElement('ul');
+                forecastDay5 = document.createElement('ul');
+                forecastFor5Days = ["", forecastDay1, forecastDay2, forecastDay3, forecastDay4, forecastDay5]
+
+
+
+                weatherFor5Days[i].append(forecastFor5Days[i]);
+
+
                 forecastFor5Days[i].append(displayDate);
                 forecastFor5Days[i].append(displayWeatherIcon);
                 forecastFor5Days[i].append(displayTemperature);
                 forecastFor5Days[i].append(displayWindSpeed);
-                forecastFor5Days[i].append(displayHumidityPercent); 
+                forecastFor5Days[i].append(displayHumidityPercent);
+
+
+
+
+
+
+                
+
+
+                // displayDate.innerHTML = '';
+                // displayWeatherIcon.innerHTML = '';
+                // displayTemperature.innerHTML = '';
+                // displayWindSpeed.innerHTML = '';
+                // displayHumidityPercent.innerHTML = '';
             }
             // Display today's weather forecast in the jumbotron
             date = data.list[0].dt_txt;
@@ -125,17 +227,17 @@ function getWeatherForecast() {
             temperature = data.list[0].main.temp;
             windSpeed = data.list[0].wind.speed;
             humidityPercent = data.list[0].main.humidity;
-            var jumboDisplayLine1 = document.createElement('li');
+            jumboDisplayLine1 = document.createElement('li');
             jumboDisplayLine1.textContent = cityName + ' (' + date + ')';
-            var jumboDisplayIconLine = document.createElement('li');
-            var jumboDisplayIconImage = document.createElement('img')
+            jumboDisplayIconLine = document.createElement('li');
+            jumboDisplayIconImage = document.createElement('img')
             $(jumboDisplayIconImage).attr('src', iconSymbol)
             jumboDisplayIconLine.append(jumboDisplayIconImage)
-            var jumboDisplayLine2 = document.createElement('li');
+            jumboDisplayLine2 = document.createElement('li');
             jumboDisplayLine2.textContent = 'Temp: ' + temperature + '°F';
-            var jumboDisplayLine3 = document.createElement('li');
+            jumboDisplayLine3 = document.createElement('li');
             jumboDisplayLine3.textContent = 'Wind: ' + windSpeed + ' MPH';
-            var jumboDisplayLine4 = document.createElement('li');
+            jumboDisplayLine4 = document.createElement('li');
             jumboDisplayLine4.textContent = 'Humidity: ' + humidityPercent + '%';
             forecastToday.append(jumboDisplayLine1);
             forecastToday.append(jumboDisplayIconLine)
@@ -172,14 +274,49 @@ function displayIcon() {
         iconSymbol = './assets/images/50d@2x.png'
     }
 }
+function clearPreviousResults() {
+    // date = '';
+    // cityName = '';
+    // weatherIcon = '';
+    // temperature = '';
+    // windSpeed = '';
+    // humidityPercent = '';
+    // forecastToday.remove();
+
+    // for (var i = 0; i < forecastFor5Days.length; i++) {
+    //         forecastFor5Days[i].innerHTML = '';
+    //     };
+}
 // Performs the search
 var runSearch = function(event) {
     event.preventDefault();
     // Clear previous results - not working
-    // forecastToday.textContent = '';
-    // for (var i = 1; i < forecastFor5Days.length; i++) {
-    //     forecastFor5Days[i].innerHTML = '';
-    // };
+    if (jumboDisplayIconLine) {
+        jumboDisplayIconLine.innerHTML = '';
+        jumboDisplayLine1.innerHTML = '';
+        jumboDisplayIconImage.innerHTML = '';
+        jumboDisplayLine2.innerHTML = '';
+        jumboDisplayLine3.innerHTML = '';
+        jumboDisplayLine4.innerHTML = '';
+        // displayDate.innerHTML = '';
+        // displayWeatherIcon.innerHTML = '';
+        // displayTemperature.innerHTML = '';
+        // displayWindSpeed.innerHTML = '';
+        // displayHumidityPercent.innerHTML = '';
+        // for (var i = 1; i < dateArray.length; i++) {
+            // dateArray[1][1].innerHTML = '';
+            // console.log(dateArray[1][1]);
+        //     // var clear5DayResults1 = forecastFor5Days[1].children('li')
+        //     // clear5DayResults1.innerHTML = '';
+        //     forecastFor5Days[i].removeChild('li');
+        // //     displayDate.innerHTML = '';
+        // //     displayWeatherIcon.innerHTML = '';
+        // //     displayTemperature.innerHTML = '';
+        // //     displayWindSpeed.innerHTML = '';
+        // //     displayHumidityPercent.innerHTML = '';
+        // }
+    }
+    // clearPreviousResults();
     getGeocodingResults();
     // console.log(searchPlace);
 }
