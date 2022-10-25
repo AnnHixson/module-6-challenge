@@ -102,7 +102,10 @@ function getWeatherForecast() {
                 var displayDate = document.createElement('li');
                 displayDate.textContent = date;
                 var displayWeatherIcon = document.createElement('li');
-                displayWeatherIcon.textContent = iconSymbol;
+                var weatherIconImage = document.createElement('img')
+                $(weatherIconImage).attr('src', iconSymbol)
+                displayWeatherIcon.append(weatherIconImage)
+                // displayWeatherIcon.textContent = iconSymbol;
                 var displayTemperature = document.createElement('li');
                 displayTemperature.textContent = 'Temp: ' + temperature + '°F';
                 var displayWindSpeed = document.createElement('li');
@@ -123,7 +126,11 @@ function getWeatherForecast() {
             windSpeed = data.list[0].wind.speed;
             humidityPercent = data.list[0].main.humidity;
             var jumboDisplayLine1 = document.createElement('li');
-            jumboDisplayLine1.textContent = cityName + ' (' + date + ') ' + iconSymbol;
+            jumboDisplayLine1.textContent = cityName + ' (' + date + ')';
+            var jumboDisplayIconLine = document.createElement('li');
+            var jumboDisplayIconImage = document.createElement('img')
+            $(jumboDisplayIconImage).attr('src', iconSymbol)
+            jumboDisplayIconLine.append(jumboDisplayIconImage)
             var jumboDisplayLine2 = document.createElement('li');
             jumboDisplayLine2.textContent = 'Temp: ' + temperature + '°F';
             var jumboDisplayLine3 = document.createElement('li');
@@ -131,38 +138,38 @@ function getWeatherForecast() {
             var jumboDisplayLine4 = document.createElement('li');
             jumboDisplayLine4.textContent = 'Humidity: ' + humidityPercent + '%';
             forecastToday.append(jumboDisplayLine1);
+            forecastToday.append(jumboDisplayIconLine)
             forecastToday.append(jumboDisplayLine2);
             forecastToday.append(jumboDisplayLine3);
             forecastToday.append(jumboDisplayLine4);
         })
-        // .then (displayWeatherForecast)
 }
 // Display the weather forecast icon
 function displayIcon() {
     if (weatherIcon === '01d') {
-        iconSymbol = '☀️'
+        iconSymbol = './assets/images/01d@2x.png'
     } else if (weatherIcon === '01n') {
-        iconSymbol = '🌙'
+        iconSymbol = './assets/images/01n@2x.png'
     } else if (weatherIcon === '02d') {
-        iconSymbol = '⛅'
+        iconSymbol = './assets/images/02d@2x.png'
     } else if (weatherIcon === '02n') {
-        iconSymbol = 'moon behind cloud'
+        iconSymbol = './assets/images/02n@2x.png'
     } else if (weatherIcon === '03d' || weatherIcon === '03n') {
-        iconSymbol = '☁️'
+        iconSymbol = './assets/images/03d@2x.png'
     } else if (weatherIcon === '04d' || weatherIcon === '04n') {
-        iconSymbol = 'light cloud in front of dark cloud'
+        iconSymbol = './assets/images/04d@2x.png'
     } else if (weatherIcon === '09d' || weatherIcon === '09n') {
-        iconSymbol = '🌧️'
+        iconSymbol = './assets/images/09d@2x.png'
     } else if (weatherIcon === '10d') {
-        iconSymbol = '🌦️'
+        iconSymbol = './assets/images/10d@2x.png'
     } else if (weatherIcon === '10n') {
-        iconSymbol = 'moon behind rain cloud'
+        iconSymbol = './assets/images/10n@2x.png'
     } else if (weatherIcon === '11d' || weatherIcon === '11n') {
-        iconSymbol = '🌩️'
+        iconSymbol = './assets/images/11d@2x.png'
     } else if (weatherIcon === '13d' || weatherIcon === '13n') {
-        iconSymbol = '❄️'
+        iconSymbol = './assets/images/13d@2x.png'
     } else if (weatherIcon === '50d' || weatherIcon === '50n') {
-        iconSymbol = '🌫️'
+        iconSymbol = './assets/images/50d@2x.png'
     }
 }
 // Performs the search

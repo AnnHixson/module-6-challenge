@@ -29,12 +29,15 @@ h1 {
     background-color: rgba(73, 110, 212, 0.726)
 }
 
+.jumbotron {
+    background-color: rgba(135, 197, 199, 0.767);
+    font-weight: bold;
+}
+
 .forecast-cards {
     margin-right: 10px;
-    background-color: rgba(22, 25, 43, 0.863);
-    color: rgb(255, 252, 246);
-    /* display: flex;
-    justify-content: left; */
+    background-color: rgba(54, 111, 196, 0.705);
+    font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {
