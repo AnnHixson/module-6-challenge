@@ -25,6 +25,7 @@ var weatherIcon;
 var temperature;
 var windSpeed;
 var humidityPercent;
+var iconSymbol
 // Other Variables
 var storedSearchesButton;
 
@@ -92,15 +93,16 @@ function getWeatherForecast() {
             console.log("data", data);
             // Display the 5 day forecast
             for (var i = 1; i < forecastFor5Days.length; i++) {
-                date = data.list[i].dt_txt;
+                date = data.list[i * 8 - 1].dt_txt; //with assisteance from AskBCS
                 weatherIcon = data.list[i].weather[0].icon;
+                displayIcon();
                 temperature = data.list[i].main.temp;
                 windSpeed = data.list[i].wind.speed;
                 humidityPercent = data.list[i].main.humidity;
                 var displayDate = document.createElement('li');
                 displayDate.textContent = date;
                 var displayWeatherIcon = document.createElement('li');
-                displayWeatherIcon.textContent = weatherIcon;
+                displayWeatherIcon.textContent = iconSymbol;
                 var displayTemperature = document.createElement('li');
                 displayTemperature.textContent = 'Temp: ' + temperature + '°F';
                 var displayWindSpeed = document.createElement('li');
@@ -116,11 +118,12 @@ function getWeatherForecast() {
             // Display today's weather forecast in the jumbotron
             date = data.list[0].dt_txt;
             weatherIcon = data.list[0].weather[0].icon;
+            displayIcon();
             temperature = data.list[0].main.temp;
             windSpeed = data.list[0].wind.speed;
             humidityPercent = data.list[0].main.humidity;
             var jumboDisplayLine1 = document.createElement('li');
-            jumboDisplayLine1.textContent = cityName + ' (' + date + ') ' + weatherIcon;
+            jumboDisplayLine1.textContent = cityName + ' (' + date + ') ' + iconSymbol;
             var jumboDisplayLine2 = document.createElement('li');
             jumboDisplayLine2.textContent = 'Temp: ' + temperature + '°F';
             var jumboDisplayLine3 = document.createElement('li');
@@ -132,22 +135,44 @@ function getWeatherForecast() {
             forecastToday.append(jumboDisplayLine3);
             forecastToday.append(jumboDisplayLine4);
         })
-        .then (displayWeatherForecast)
+        // .then (displayWeatherForecast)
 }
-// Display the weather forecast data
-function displayWeatherForecast() {
-
-    console.log(cityName);
-    console.log(date);
-    console.log(weatherIcon);
-    console.log(temperature);
-    console.log(windSpeed);
-    console.log(humidityPercent);
-
+// Display the weather forecast icon
+function displayIcon() {
+    if (weatherIcon === '01d') {
+        iconSymbol = '☀️'
+    } else if (weatherIcon === '01n') {
+        iconSymbol = '🌙'
+    } else if (weatherIcon === '02d') {
+        iconSymbol = '⛅'
+    } else if (weatherIcon === '02n') {
+        iconSymbol = 'moon behind cloud'
+    } else if (weatherIcon === '03d' || weatherIcon === '03n') {
+        iconSymbol = '☁️'
+    } else if (weatherIcon === '04d' || weatherIcon === '04n') {
+        iconSymbol = 'light cloud in front of dark cloud'
+    } else if (weatherIcon === '09d' || weatherIcon === '09n') {
+        iconSymbol = '🌧️'
+    } else if (weatherIcon === '10d') {
+        iconSymbol = '🌦️'
+    } else if (weatherIcon === '10n') {
+        iconSymbol = 'moon behind rain cloud'
+    } else if (weatherIcon === '11d' || weatherIcon === '11n') {
+        iconSymbol = '🌩️'
+    } else if (weatherIcon === '13d' || weatherIcon === '13n') {
+        iconSymbol = '❄️'
+    } else if (weatherIcon === '50d' || weatherIcon === '50n') {
+        iconSymbol = '🌫️'
+    }
 }
 // Performs the search
 var runSearch = function(event) {
     event.preventDefault();
+    // Clear previous results - not working
+    // forecastToday.textContent = '';
+    // for (var i = 1; i < forecastFor5Days.length; i++) {
+    //     forecastFor5Days[i].innerHTML = '';
+    // };
     getGeocodingResults();
     // console.log(searchPlace);
 }
