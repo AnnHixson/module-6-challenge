@@ -56,10 +56,9 @@ var weatherIconImage5;
 var temperature5;
 var windSpeed5;
 var humidityPercent5;
-
 // Other Variables
 var storedSearchesButton;
-// testing
+// Result Variables
 var weatherIconImage;
 var jumboDisplayLine1;
 var jumboDisplayIconLine;
@@ -92,22 +91,6 @@ var displayWeatherIcon5;
 var displayTemperature5;
 var displayWindSpeed5;
 var displayHumidityPercent5;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Functions
 
@@ -281,7 +264,7 @@ function getWeatherForecast() {
             windSpeed2 = data.list[2 * 8 - 1].wind.speed;
             humidityPercent2 = data.list[2 * 8 - 1].main.humidity;
             displayDate2 = document.createElement('li');
-            displayDate2.textContent = date1;
+            displayDate2.textContent = date2;
             displayWeatherIcon2 = document.createElement('li');
             weatherIconImage2 = document.createElement('img')
             $(weatherIconImage2).attr('src', iconSymbol)
@@ -447,46 +430,6 @@ function getWeatherForecast() {
             forecastDay5.append(displayTemperature5);
             forecastDay5.append(displayWindSpeed5);
             forecastDay5.append(displayHumidityPercent5); 
-
-
-
-
-
-
-
-
-
-
-
-
-            // // for (var i = 1; i < forecastFor5Days.length; i++) {
-            //     date = data.list[i * 8 - 1].dt_txt; //with assisteance from AskBCS
-            //     weatherIcon = data.list[i].weather[0].icon;
-            //     displayIcon();
-            //     temperature = data.list[i].main.temp;
-            //     windSpeed = data.list[i].wind.speed;
-            //     humidityPercent = data.list[i].main.humidity;
-            //     displayDate = document.createElement('li');
-            //     displayDate.textContent = date;
-            //     displayWeatherIcon = document.createElement('li');
-            //     weatherIconImage = document.createElement('img');
-            //     $(weatherIconImage).attr('src', iconSymbol);
-            //     displayWeatherIcon.append(weatherIconImage);
-            //     displayTemperature = document.createElement('li');
-            //     displayTemperature.textContent = 'Temp: ' + temperature + '°F';
-            //     displayWindSpeed = document.createElement('li');
-            //     displayWindSpeed.textContent = 'Wind: ' + windSpeed + ' MPH';
-            //     displayHumidityPercent = document.createElement('li');
-            //     displayHumidityPercent.textContent = 'Humidity: ' + humidityPercent + '%';   
-            //     forecastFor5Days[i].append(displayDate);
-            //     forecastFor5Days[i].append(displayWeatherIcon);
-            //     forecastFor5Days[i].append(displayTemperature);
-            //     forecastFor5Days[i].append(displayWindSpeed);
-            //     forecastFor5Days[i].append(displayHumidityPercent);
-            // // }
-
-            
-
         })
 }
 // Display the weather forecast icon
@@ -565,13 +508,10 @@ function clearPreviousResults() {
 // Performs the search
 var runSearch = function(event) {
     event.preventDefault();
-    // Clear previous results - not working
-
     clearPreviousResults();
     getGeocodingResults();
-    // console.log(searchPlace);
 }
-// Initial page set-up
+// Initial page set-up - Not Working
 function init() {
     displayStoredSearches();
 }
